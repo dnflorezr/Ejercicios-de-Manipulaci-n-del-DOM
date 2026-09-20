@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios DOM y Eventos</title>
+  <style>
+    body {
+      font-family: 'Merriweather', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    h1 {
+      color: #011a2e;
+      text-align: center;
+    }
+
+    section {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px 30px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    button {
+      background-color: #000001;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    #contador {
+      font-size: 2em;
+      margin: 10px 0;
+    }
+
+    #resultado {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #0078D7;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <h1>Ejercicios Integrados de JavaScript</h1>
+
+    <!-- Ejercicio 1: Contador -->
+  <section>
+    <h2> Contador</h2>
+    <h3 id="contador">0</h3>
+    <button id="inc">Incrementar</button>
+    <button id="dec">Decrementar</button>
+    <button id="reset">Reiniciar</button>
+  </section>
+
+    <!-- Ejercicio 2: Formulario sin recarga -->
+  <section>
+    <h2> Formulario sin recarga</h2>
+    <form id="formulario">
+      <input type="text" id="nombre" placeholder="Nombre">
+      <input type="email" id="email" placeholder="Email">
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="resultado"></p>
+  </section>
+
+  <!-- Ejercicio 3: Cambiar color de fondo -->
+  <section>
+    <h2> Cambiar color de fondo</h2>
+    <button id="colorBtn">Cambiar color</button>
+  </section>
+
+  <script>
+    // Ejercicio 1: Contador
+    let valor = 0;
+    const contador = document.getElementById('contador');
+    document.getElementById('inc').onclick = () => contador.textContent = ++valor;
+    document.getElementById('dec').onclick = () => contador.textContent = --valor;
+    document.getElementById('reset').onclick = () => contador.textContent = valor = 0;
+
+    // Ejercicio 2: Formulario sin recarga
+    document.getElementById('formulario').addEventListener('submit', e => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      document.getElementById('resultado').textContent = `Nombre: ${nombre}, Email: ${email}`;
+    });
+
+    // Ejercicio 3: Cambiar color de fondo
+    const colores = ['#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#16A085', '#FFFFFF', '#2980B9', '#2ECC71'];
+    document.getElementById('colorBtn').onclick = () => {
+      document.body.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+    };
+  </script>
+</body>
+</html>
